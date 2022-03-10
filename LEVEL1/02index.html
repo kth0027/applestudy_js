@@ -11,8 +11,12 @@
 
 <body>
     <div class="alert-box" id="alert">
-        <p id="title1">알림창임</p>
-        <button class="title1" onclick="알림창열기('none')">
+        <!-- <p id="title">알림창임</p> -->
+        <p class="title1">알림창임</p>
+        <!-- <button class="title1" onclick="알림창열기('none')">
+            닫기
+        </button> -->
+        <button id="close">
             닫기
         </button>
     </div>
@@ -25,10 +29,21 @@
 </body>
 
 <script>
+
+    document.getElementById('close').addEventListener('click', function () {
+        document.getElementById('alert').style.display = 'none';
+    });
+
+    function 알림창열기(구멍) {
+        document.getElementById('alert').style.display = 구멍;
+    }
+
+
+
     function 아이디알림창() {
         // 1. P태그 내용을 아이디입력으로 바꿈
-        // document.getElementById('title').innerHTML = '아이디 입력하셈';
-        document.getElementsByClassName('title1')[0].innerHTML = '아이디 입력하셈';
+        document.getElementById('title').innerHTML = '아이디 입력하셈';
+        // document.getElementsByClassName('title1')[0].innerHTML = '아이디 입력하셈';
 
         // 2. 띄움
         document.getElementById('alert').style.display = 'block';
@@ -36,7 +51,7 @@
 
     function 비번알림창() {
         // 1. P태그 내용을 아이디입력으로 바꿈
-        document.getElementById('title').innerHTML = '비밀번호 입력하셈';
+        document.getElementById('title').innerHTML = '비밀번호입력하셈~';
 
         // 2. 띄움
         document.getElementById('alert').style.display = 'block';
@@ -45,17 +60,17 @@
 </script>
 
 <script>
-    function 알림창열기(구멍) {
-        document.getElementById('alert').style.display = 구멍;
-    }
+    // function 알림창열기(구멍) {
+    //     document.getElementById('alert').style.display = 구멍;
+    // }
 
-    function plus(구멍) {
-        2 + 구멍
-    }
+    // function plus(구멍) {
+    //     2 + 구멍
+    // }
 
-    plus(1);
-    plus(2);
-    plus(3);
+    // plus(1);
+    // plus(2);
+    // plus(3);
 </script>
 
 </html>
