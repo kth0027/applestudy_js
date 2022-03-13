@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- Jquery -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <h4 id="title" >상품제목</h4>
+    <p id="text">상품내용</p>
+    <div style="margin-bottom: 500px;"></div>
+
+    <script>
+        // Array Object
+        var 어레이 = ['BMW', 520, [1, 2, 3]];
+        console.log(어레이);
+        console.log(어레이[0]); // BMW 출력
+
+        var 오브젝트 = { brand: 'BMW', model: 520 }
+        // key : value
+        console.log(오브젝트.brand);
+        console.log(오브젝트.model);
+
+        var 자료 = [{brand : 'BMW', brand2 : 'BENZ'}, {model : 520}];
+
+        // document.getElementById().innerHTML = ?? ;
+        // $('??').html(??;)
+        // document.getElementById('title').innerHTML = 어레이[0];
+        // $('#title').html(어레이[0]);
+        // $('#text').html(어레이[1]);
+        // $('#text').html(오브젝트.model);
+
+        $('#title').html(자료[0].brand)
+        $('#text').html(자료[1].model)
+    </script>
+</body>
+
+</html>
