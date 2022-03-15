@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+
+    <style>
+        .card-background {
+            height: 3000px;
+            margin-top: 800px;
+            margin-bottom: 1600px;
+        }
+
+        .card-box img {
+            display: block;
+            margin: auto;
+            max-width: 80%;
+        }
+
+        .card-box {
+            position: sticky;
+            top: 400px;
+            margin-top: 200px;
+            transition: all 0.2s;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+       crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+       
+    <div class="card-background">
+        <div class="card-box">
+            <img src="card1.png">
+        </div>
+        <div class="card-box">
+            <img src="/LEVEL3/card2.png">
+        </div>
+        <div class="card-box">
+            <img src="card3.png">
+        </div>
+    </div>
+
+    <script>
+        $(window).scroll(function () {
+            var 높이 = $(window).scrollTop();
+            console.log(높이);
+            // 650 ~ 1150 까지 opacity 변경
+            var y = (-1 / 500) * 높이 + 115 / 50;
+            // y = a * 높이 + b;
+            // 1 = a * 650 + b;
+            // 0 = a * 1150 + b;
+            // y = (-1/500) * 높이 + 115/50;
+            a = -1 / 500;
+            b = 115 / 50;
+
+            var z = (-1 / 5000) * 높이 + 565 / 500;
+            // 1 = a * 650 + b;
+            // 0.9 = a * 1150 + b;
+            $('.card-box').eq(0).css('opacity', y);
+            $('.card-box').eq(0).css('transform', `scale( ${z} )`);
+        })
+    </script>
+</body>
+
+</html>

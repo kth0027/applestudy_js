@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        .slide-container {
+            width: 300vw;
+            transition: all 1s;
+            transform: translateX(-100vw);
+        }
+
+        .slide-box {
+            width: 100vw;
+            float: left;
+        }
+
+        .slide-box img {
+            width: 100%;
+        }
+
+        .transforming {
+            transition: transform 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <h4 class="my-4 text-center" style="text-align: center;">Show Case</h4>
+    <div style="overflow: hidden; position: relative">
+        <div class="slide-container transforming">
+            <div class="slide-box">
+                <img src="/LEVEL3/card1.png">
+            </div>
+            <div class="slide-box">
+                <img src="/LEVEL3/card2.png">
+            </div>
+            <div class="slide-box">
+                <img src="/LEVEL3/card3.png">
+            </div>
+        </div>
+    </div>
+
+    <!-- hammer.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"
+        integrity="sha256-eVNjHw5UeU0jUqPPpZHAkU1z4U+QFBBY488WvueTm88=" crossorigin="anonymous"></script>
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        var 지금사진 = 1;
+
+
+        var 이미지1 = document.querySelectorAll('.slide-box img')[0];
+
+        var 매니저 = new Hammer.Manager(이미지1);
+        매니저.add(new Hammer.Pan({ threshold: 0 }));
+
+        매니저.on('pan', function (e) {
+            // console.log(e.deltaX);
+            $('.slide-container').css('transform', 'translateX(' + e.deltaX + ')');
+            //이미지1이 pan 되었을 때 실행할 코드 
+
+            if (e.deltaX < -1) {
+                $('.slide-container').css('transform', 'translateX(' + e.deltaX + 'px)');
+
+                //만약에 이사람이 마우스를 놓으면 ... 
+                //터치가 끝나는걸 알려주거라 
+                if (e.isFinal && 지금사진 == 1) {
+                    //두번째 사진으로 쇽 변해야함 
+                    // console.log(e.isFinal)
+                    $('.slide-container').addClass('transforming');
+                    $('.slide-container').css('transform', 'translateX(-100vw)');
+                    // 0.5초 후에
+                    setTimeout(function () {
+                        $('.slide-container').removeClass('transforming');
+                    }, 500);
+                }
+            }
+        });
+
+
+
+        $('.next').on('click', function () {
+            if (지금사진 == 1) {
+                $('.slide-container').css('transform', 'translateX(-100vw)');
+                지금사진 += 1;
+            }
+            else if (지금사진 == 2) {
+                $('.slide-container').css('transform', 'translateX(-200vw)');
+                지금사진 += 1;
+            }
+        })
+    </script>
+
+</body>
+
+</html>
